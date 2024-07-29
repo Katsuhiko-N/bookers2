@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
          has_one_attached :image
+         
+        # アソシエーション
+         has_many :books, dependent: :destroy
 end
