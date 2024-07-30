@@ -18,7 +18,8 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     
-    # テンプレート用
+    # 以下テンプレート用
+    # 新規投稿用
     @book_new = Book.new
     # ログインユーザの情報取得（idはcurrent_user.id）
     @user = User.find(current_user.id)
@@ -31,6 +32,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     
     # テンプレート用
+    # 新規投稿用
     @book_new = Book.new
     # 一つの本のレコードに対しuserは１人の関係だから？ .user
     @user = @book.user

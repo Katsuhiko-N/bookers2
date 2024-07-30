@@ -4,11 +4,12 @@
 <!--右半分本文-->
 <h1>Book detail</h1>
 <div>
+    <%= link_to user_path(@book.user.id) do %>
     <div><%= image_tag @book.user.get_profile_image(100,100) %></div>
-    <p><%= @book.user.name %></p>
+    <% end %>
+    <p><%= link_to "#{@book.user.name}", user_path(@book.user.id) %></p>
     <p><%= @book.title %></p>
     <p><%= @book.body %></p>
-    <p><%= @book.user.name %></p>
     
     <!--本のeditページへ-->
     <p><%= link_to "edit", edit_book_path(@book.id) %></p>

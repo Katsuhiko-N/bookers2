@@ -1,0 +1,29 @@
+<!--部分テンプレート-->
+<p><%= render 'books/tpl', book_new: @book_new, user: @user %></p>
+
+
+<!--右半分本文-->
+<h1>Users</h1>
+
+<table>
+    <thead>
+        <tr>
+            <!--3個目はリンク部分なので空白-->
+            
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+            <tr>
+                <!--画像リンクはあとで-->
+                <td><%= image_tag user.get_profile_image(100,100) %></td>
+                <td><%= user.name %></td>
+                <td><%= link_to "show", user_path(user.id) %></td>
+                
+            </tr>
+        <% end %>
+    </tbody>
+</table>
