@@ -11,9 +11,10 @@
     <p><%= @book.title %></p>
     <p><%= @book.body %></p>
     
-    <!--本のeditページへ-->
-    <p><%= link_to "edit", edit_book_path(@book.id) %></p>
-    
-    <!--本のdestroyページへ-->
-    <p><%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？"%></p>
+    <% if @book.user_id == current_user.id %>
+        <!--本のeditページへ-->
+        <p><%= link_to "edit", edit_book_path(@book.id) %></p>
+        <!--本のdestroyページへ-->
+        <p><%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？"%></p>
+    <% end %>
 </div>
