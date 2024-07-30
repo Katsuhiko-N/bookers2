@@ -1,10 +1,18 @@
+<!--部分テンプレート-->
+<%= render 'tpl', book_new: @book_new, user: @user %>
 
-<%= render 'tpl', book_new: @book_new %>
-
+<!--右半分本文-->
 <h1>Book detail</h1>
 <div>
+    <div><%= image_tag @book.user.get_profile_image(100,100) %></div>
+    <p><%= @book.user.name %></p>
     <p><%= @book.title %></p>
     <p><%= @book.body %></p>
     <p><%= @book.user.name %></p>
     
+    <!--本のeditページへ-->
+    <p><%= link_to "edit", edit_book_path(@book.id) %></p>
+    
+    <!--本のdestroyページへ-->
+    <p><%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？"%></p>
 </div>

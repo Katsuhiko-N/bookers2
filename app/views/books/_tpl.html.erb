@@ -1,5 +1,13 @@
 <h1>テンプレート</h1>
 
+<!--本詳細(/books/show)の時だけその本のuser情報-->
+<h1>User info</h1>
+<div><%= image_tag user.get_profile_image(100,100) %></div>
+<h3>name<%= user.name %></h3>
+<h3>introduction<%= user.introduction %></h3>
+
+
+
 
 
 <!--表示にはインスタンス変数book_newが必要-->

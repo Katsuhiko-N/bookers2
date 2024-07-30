@@ -17,17 +17,40 @@ class BooksController < ApplicationController
 # 本一覧取得
   def index
     @books = Book.all
+    
+    # テンプレート用
+    @book_new = Book.new
+    # ログインユーザの情報取得（idはcurrent_user.id）
+    @user = User.find(current_user.id)
+    
   end
 
 # 本詳細表示
 # 表示中のid=レコード（params）の引数
   def show
+    @book = Book.find(params[:id])
+    
     # テンプレート用
     @book_new = Book.new
-    @book = Book.find(params[:id])
+    # 一つの本のレコードに対しuserは１人の関係だから？ .user
+    @user = @book.user
+    
   end
 
   def edit
+    @book = Book.find(params[:id])
+  end
+  
+  def update
+    @book = Book.find(params[:id])
+    @book.update(book_params)
+    redirect_to book_path(book.id)
+  end
+  
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
+    redirect_to books_path
   end
   
   
@@ -38,6 +61,5 @@ class BooksController < ApplicationController
     # Bookモデルに関係したtitle,bodyカラムのみに限定
     params.require(:book).permit(:title, :body)
   end
-  
   
 end
