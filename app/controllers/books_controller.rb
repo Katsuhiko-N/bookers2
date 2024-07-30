@@ -45,6 +45,7 @@ class BooksController < ApplicationController
   
   def update
     @book = Book.find(params[:id])
+    @book.user_id = current_user.id
     @book.update(book_params)
     redirect_to book_path(book.id)
   end
@@ -60,8 +61,8 @@ class BooksController < ApplicationController
   
   def book_params
     # 投稿データのストロングパラメータ
-    # Bookモデルに関係したtitle,bodyカラムのみに限定
-    params.require(:book).permit(:title, :body)
+    # Bookモデルに関係したtitle,body,user_idカラムのみに限定
+    params.require(:book).permit(:title, :body, :user_id)
   end
   
 end

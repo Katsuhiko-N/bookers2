@@ -9,6 +9,13 @@ class User < ApplicationRecord
         # アソシエーション
          has_many :books, dependent: :destroy
          
+         # バリデーション
+         validates :name, presence: true
+         validates :name, length: {minimam: 2, maximum: 20}
+         validates :introduction, presence: true
+         validates :introduction, length: {maximum: 50}
+         validates :profile_image, presence: true
+         
          
          def get_profile_image(width, height)
              unless profile_image.attached?
