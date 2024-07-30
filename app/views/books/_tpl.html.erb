@@ -1,0 +1,13 @@
+<h1>テンプレート</h1>
+
+
+
+<!--表示にはインスタンス変数book_newが必要-->
+<h1>New book</h1>
+<%= form_with model: book_new do |f| %>
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+    <h4>Opinion</h4>
+    <%= f.text_area :body %>
+    <%= f.submit 'Create Book' %>
+<% end %>

@@ -22,6 +22,8 @@ class BooksController < ApplicationController
 # 本詳細表示
 # 表示中のid=レコード（params）の引数
   def show
+    # テンプレート用
+    @book_new = Book.new
     @book = Book.find(params[:id])
   end
 
