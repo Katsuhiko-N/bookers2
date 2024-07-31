@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+  # アクション前に実行するメソッド
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+  
   # 投稿画面用
   def new
     @book = Book.new
@@ -68,5 +71,13 @@ class BooksController < ApplicationController
     # Bookモデルに関係したtitle,body,user_idカラムのみに限定
     params.require(:book).permit(:title, :body, :user_id)
   end
+  
+  def is_matching_login_user
+    log_in_user_id = Book.find(params[:id]).user_id
+    unless log_in_user_id == current_user.id
+      redirect_to user_path(current_user.id)
+    end
+  end
+  
   
 end

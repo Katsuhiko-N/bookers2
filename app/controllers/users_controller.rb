@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  # アクション前に実行するメソッド
+  before_action :is_matching_login_user, only: [:edit, :update]
+  
   def index
     @users = User.all
     # テンプレート用
@@ -37,6 +40,13 @@ class UsersController < ApplicationController
     # ユーザデータのストロングパラメータ
     # Userモデルに関係したname,introduction,profile_imageカラムのみに限
     params.require(:user).permit(:name, :introduction, :profile_image)
+  end
+  
+  def is_matching_login_user
+    log_in_user = User.find(params[:id])
+    unless log_in_user.id == current_user.id
+      redirect_to user_path(current_user.id)
+    end
   end
   
 end
