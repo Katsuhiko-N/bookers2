@@ -13,6 +13,7 @@ class BooksController < ApplicationController
     # 投稿者id=ログインユーザid
     @book_new.user_id = current_user.id
     if @book_new.save
+      flash[:notice] = "You have created book successfully."
       # @bookのid=パスの引数
       redirect_to user_path(@book_new.user_id)
     else
@@ -56,6 +57,7 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     
     if @book.update(book_params)
+      flash[:notice] = "You have updated book successfully."
       redirect_to book_path(book.id)
     else
       render :edit
