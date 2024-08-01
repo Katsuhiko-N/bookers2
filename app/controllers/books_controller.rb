@@ -14,7 +14,7 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     @book.save
     # @bookのid=パスの引数
-    redirect_to book_path(@book.id)
+    redirect_to user_path(@book.user_id)
   end
   
 # 本一覧取得
