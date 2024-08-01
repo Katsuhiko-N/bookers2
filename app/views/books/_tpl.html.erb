@@ -18,11 +18,11 @@
 <!--編集画面へのリンク-->
 <% if user.id == current_user.id %>
     <%= link_to edit_user_path(current_user.id) do %>
-        <p>歯車</p>
+        <i class="fa-solid fa-user-gear"></i>
     <% end %>
 <% else %>
     <%= link_to user_path(current_user.id) do %>
-        <p>歯車</p>
+        <i class="fa-solid fa-user-gear"></i>
    <% end %>
 <% end %>
 
