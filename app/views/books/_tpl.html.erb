@@ -1,8 +1,19 @@
 <!--本詳細(/books/show)の時だけその本のuser情報-->
 <h1>User info</h1>
-<div><%= image_tag user.get_profile_image(100,100) %></div>
-<h3>name<%= user.name %></h3>
-<h3>introduction<%= user.introduction %></h3>
+
+<table>
+    <tbody>
+        <tr>
+            <td><%= image_tag user.get_profile_image(100,100) %></td>
+        </tr>
+        <tr>
+            <td>name</td><td><%= user.name %></td>
+        </tr>
+        <tr>
+            <td>introduction</td><td><%= user.introduction %></td>
+        </tr>
+    </tbody>
+</table>
 
 <!--編集画面へのリンク-->
 <% if user.id == current_user.id %>
