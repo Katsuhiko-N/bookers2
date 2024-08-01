@@ -4,23 +4,28 @@ class BooksController < ApplicationController
   
   # 投稿画面用
   def new
-    @book = Book.new
+    @book_new = Book.new
   end
   
   # 投稿機能
   def create
-    @book = Book.new(book_params)
+    @book_new = Book.new(book_params)
     # 投稿者id=ログインユーザid
-    @book.user_id = current_user.id
-    @book.save
-    # @bookのid=パスの引数
-    redirect_to user_path(@book.user_id)
+    @book_new.user_id = current_user.id
+    if @book_new.save
+      # @bookのid=パスの引数
+      redirect_to user_path(@book_new.user_id)
+    else
+      # render :indexで必要なインスタンス変数
+      @books = Book.all
+      @user = User.find(current_user.id)
+      render :index
+    end
   end
   
 # 本一覧取得
   def index
     @books = Book.all
-    
     # 以下テンプレート用
     # 新規投稿用
     @book_new = Book.new

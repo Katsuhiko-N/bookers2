@@ -1,3 +1,16 @@
+<% if @book_new.errors.any? %>
+    <%= @book_new.errors.count %>error prohibited this obj from being saved:
+    <ul>
+        <% @book_new.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+
+
+
+
 <!--部分テンプレート-->
 <p><%= render 'tpl', book_new: @book_new, user: @user %></p>
 
