@@ -15,3 +15,20 @@ a{
 li{
     list-style: none;
 }
+
+table,tbody,tr{
+    border-top: 1px solid lightgray;
+}
+
+th,td{
+    padding: 15px 20px;
+}
+
+th{
+    border-bottom: 2px solid lightgray;
+}
+
+.u-btn{
+    margin: 0 auto;
+    width: 200px;
+}

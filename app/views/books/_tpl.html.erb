@@ -1,27 +1,25 @@
 <!--本詳細(/books/show)の時だけその本のuser情報-->
-<h1>User info</h1>
+<h2>User info</h2>
 
+<%= image_tag user.get_profile_image(100,100) %>
 <table>
     <tbody>
         <tr>
-            <td><%= image_tag user.get_profile_image(100,100) %></td>
+            <td><strong>name</strong></td><td><strong><%= user.name %></strong></td>
         </tr>
         <tr>
-            <td>name</td><td><%= user.name %></td>
-        </tr>
-        <tr>
-            <td>introduction</td><td><%= user.introduction %></td>
+            <td><strong>introduction</strong></td><td><strong><%= user.introduction %></strong></td>
         </tr>
     </tbody>
 </table>
 
 <!--編集画面へのリンク-->
 <% if user.id == current_user.id %>
-    <%= link_to edit_user_path(current_user.id),class:"btn btn-outline-secondary btn-lg" do %>
-        <i class="fa-solid fa-user-gear "></i>
+    <%= link_to edit_user_path(current_user.id), class:"btn btn-outline-secondary u-btn" do %>
+        <i class="fa-solid fa-user-gear"></i>
     <% end %>
 <% else %>
-    <%= link_to user_path(current_user.id) do %>
+    <%= link_to user_path(current_user.id), class:"btn btn-outline-secondary u-btn" do %>
         <i class="fa-solid fa-user-gear"></i>
    <% end %>
 <% end %>
@@ -29,12 +27,13 @@
 
 
 
+
 <!--表示にはインスタンス変数book_newが必要-->
-<h1>New book</h1>
+<h2>New book</h2>
 <%= form_with model: book_new do |f| %>
-    <h4>Title</h4>
+    <p>Title</p>
     <%= f.text_field :title %>
-    <h4>Opinion</h4>
+    <p>Opinion</p>
     <%= f.text_area :body %>
-    <%= f.submit 'Create Book' %>
+    <%= f.submit 'Create Book', class:"btn btn-success" %>
 <% end %>
