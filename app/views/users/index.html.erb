@@ -7,7 +7,7 @@
             
         <div class="m-content col-md-8 offset-md-1">
             <!--右半分本文-->
-            <h1>Users</h1>
+            <h2>Users</h2>
             
             <table>
                 <thead>
@@ -23,8 +23,8 @@
                     <% @users.each do |user| %>
                         <tr>
                             <td><%= image_tag user.get_profile_image(100,100) %></td>
-                            <td><%= user.name %></td>
-                            <td><%= link_to "show", user_path(user.id) %></td>
+                            <td class="td-text"><%= user.name %></td>
+                            <td class="td-text"><%= link_to "show", user_path(user.id) %></td>
                         </tr>
                     <% end %>
                 </tbody>

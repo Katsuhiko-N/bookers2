@@ -7,19 +7,25 @@
     </ul>
 <% end %>
 
-
-<h1>Editing Book</h1>
-
-<%= form_with model: @book do |f| %>
-    <h3>Title</h3>
-    <%= f.text_field :title, autofocus: true %>
-    <h3>Opinion</h3>
-    <%= f.text_area :body %>
-    <%= f.submit "Updete Book"%>
-<% end %>
-    
-    <!--本のshowページへ-->
-    <p><%= link_to "show", book_path(@book.id) %></p>
-    
-    <!--本のdestroyページへ-->
-    <p><%= link_to "destroy", book_path(@book.id) %></p>
+<div class="container">
+  <div class="row">
+    <div class="offset-4 col-lg-4">
+        <h2>Editing Book</h2>
+        
+        <%= form_with model: @book do |f| %>
+            <p class="form-text">Title</p>
+            <%= f.text_field :title, autofocus: true %>
+            <p class="form-text">Opinion</p>
+            <%= f.text_area :body %>
+            <%= f.submit "Updete Book", class:"btn btn-success" %>
+        <% end %>
+            
+        <!--本のshow|destroyページへ-->
+        <p>
+            <span><%= link_to "Show", book_path(@book.id) %></span>
+            |
+            <span><%= link_to "Back", books_path %></span>
+        </p>
+    </div>
+  </div>
+</div>

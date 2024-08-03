@@ -20,15 +20,38 @@ table,tbody,tr{
     border-top: 1px solid lightgray;
 }
 
-th,td{
-    padding: 15px 20px;
-}
-
 th{
     border-bottom: 2px solid lightgray;
 }
 
+td{
+    padding: 5px 10px;
+    max-width: 300px;
+    word-break: break-all;
+}
+
+.btn{
+    display: block;
+    margin: 10px 0;
+}
+
+
+.td-text{
+        min-width: 120px;
+}
+
+.form-text{
+    margin-top: 15px;
+}
+
+.td-btn{
+    width: 0;
+    white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+}
+
 .u-btn{
     margin: 0 auto;
-    width: 200px;
+    width: 300px;
 }

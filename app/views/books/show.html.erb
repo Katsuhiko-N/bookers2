@@ -7,21 +7,37 @@
             
         <div class="m-content col-md-8 offset-md-1">
             <!--右半分本文-->
-            <h1>Book detail</h1>
+            <h2>Book detail</h2>
             <div>
-                <%= link_to user_path(@book.user.id) do %>
-                    <div><%= image_tag @book.user.get_profile_image(100,100) %></div>
-                <% end %>
-                <p><%= link_to "#{@book.user.name}", user_path(@book.user.id) %></p>
-                <p><%= @book.title %></p>
-                <p><%= @book.body %></p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <%= link_to user_path(@book.user.id) do %>
+                                    <div><%= image_tag @book.user.get_profile_image(100,100) %></div>
+                                <% end %>
+                                <%= link_to "#{@book.user.name}", user_path(@book.user.id) %>
+                            </td>
+                            <td class="td-text">
+                                <%= link_to "#{@book.title}", book_path(params[:id]) %>
+                            </td>
+                            <td class="td-text">
+                                <p><%= @book.body %></p>
+                            </td>
+                            <% if @book.user_id == current_user.id %>
+                            <td class="td-btn">
+                                <!--本のeditページへ-->
+                                <p><%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success btn-sm" %></p>
+                            </td>
+                            <td class="td-btn">
+                                <!--本のdestroyページへ-->
+                                <p><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger btn-sm" %></p>
+                            </td>
+                            <% end %>
+                        </tr>
+                    </tbody>
+                </table>
                 
-                <% if @book.user_id == current_user.id %>
-                    <!--本のeditページへ-->
-                    <p><%= link_to "edit", edit_book_path(@book.id) %></p>
-                    <!--本のdestroyページへ-->
-                    <p><%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？"%></p>
-                <% end %>
             </div>
         </div>
     </div>
