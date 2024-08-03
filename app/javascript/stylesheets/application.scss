@@ -8,8 +8,16 @@
     box-sizing: border-box;
 }
 
+main{
+    margin: 10px 0 50px 0;
+}
+
 a{
     text-decoration: none;
+}
+
+h2{
+    margin-top: 10px;
 }
 
 li{
@@ -30,25 +38,27 @@ td{
     word-break: break-all;
 }
 
-.btn{
-    display: block;
-    margin: 10px 0;
+.th-text{
+    padding: 8px 0;
 }
 
-
 .td-text{
-        min-width: 120px;
+    min-width: 120px;
+    vertical-align: top;
+}
+
+.td-btn{
+    width: 0;
+    white-space: nowrap;
 }
 
 .form-text{
     margin-top: 15px;
 }
 
-.td-btn{
-    width: 0;
-    white-space: nowrap;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
+.btn{
+    display: block;
+    margin: 10px 0;
 }
 
 .u-btn{

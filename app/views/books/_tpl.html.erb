@@ -31,9 +31,9 @@
 <!--表示にはインスタンス変数book_newが必要-->
 <h2>New book</h2>
 <%= form_with model: book_new do |f| %>
-    <p>Title</p>
+    <p class="form-text">Title</p>
     <%= f.text_field :title %>
-    <p>Opinion</p>
+    <p class="form-text">Opinion</p>
     <%= f.text_area :body %>
     <%= f.submit 'Create Book', class:"btn btn-success" %>
 <% end %>
