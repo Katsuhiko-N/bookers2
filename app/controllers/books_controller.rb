@@ -15,7 +15,7 @@ class BooksController < ApplicationController
     if @book_new.save
       flash[:notice] = "You have created book successfully."
       # @bookのid=パスの引数
-      redirect_to user_path(@book_new.user_id)
+      redirect_to book_path(@book_new.user_id)
     else
       # render :indexで必要なインスタンス変数
       @books = Book.all
@@ -58,7 +58,7 @@ class BooksController < ApplicationController
     
     if @book.update(book_params)
       flash[:notice] = "You have updated book successfully."
-      redirect_to book_path(book.id)
+      redirect_to book_path(@book.user_id)
     else
       render :edit
     end

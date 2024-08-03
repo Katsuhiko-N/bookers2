@@ -12,7 +12,7 @@ class User < ApplicationRecord
          # バリデーション
          validates :name, presence: true
          validates :name, uniqueness: true
-         validates :name, length: {minimam: 2, maximum: 20}
+         validates :name, length: {minimum: 2, maximum: 20}
          validates :introduction, length: {maximum: 50}
          
          
