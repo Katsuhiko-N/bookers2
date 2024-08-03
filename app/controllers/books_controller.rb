@@ -26,7 +26,7 @@ class BooksController < ApplicationController
   
 # 本一覧取得
   def index
-    @books = Book.all
+    @books = Book.page(params[:page])
     # 以下テンプレート用
     # 新規投稿用
     @book_new = Book.new
