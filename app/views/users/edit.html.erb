@@ -14,12 +14,12 @@
       
       <%= form_with model: @user do |f| %>
           <p class="form-text">Name</p>
-          <%= f.text_field :name %>
+          <%= f.text_field :name, size: "40x20" %>
           <p class="form-text">Image</p>
           <!--拡張子画像のみ-->
           <%= f.file_field :profile_image, placeholder: "選択されていません", accept: "image/*" %>
           <p class="form-text">Introduction</p>
-          <%= f.text_area :introduction %>
+          <%= f.text_area :introduction, size: "45x2" %>
           
           <%= f.submit "Update User", class:"btn btn-secondary d-block" %>
       <% end %>
