@@ -24,7 +24,7 @@
                         <tr>
                             <td><%= image_tag user.get_profile_image(100,100) %></td>
                             <td class="td-text"><%= user.name %></td>
-                            <td class="td-text"><%= link_to "show", user_path(user.id) %></td>
+                            <td class="td-text"><%= link_to "Show", user_path(user.id) %></td>
                         </tr>
                     <% end %>
                 </tbody>
