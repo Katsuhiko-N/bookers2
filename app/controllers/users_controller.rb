@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   
   def index
-    @users = User.page(params[:page])
+    @users = User.all
     # テンプレート用
     # 新規投稿用
     @book_new = Book.new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   
   def show
     # 開いているページのid＝表示するユーザidのレコード.books
-    @books = User.find(params[:id]).books.page(params[:page])
+    @books = User.find(params[:id]).books
     # テンプレート用
     # 新規投稿用
     @book_new = Book.new
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     if @user.update(user_params)
       flash[:notice] = "You have updated user successfully."
-      redirect_to users_path(current_user.id)
+      redirect_to users_path(params[:id])
     else
       render :edit
     end

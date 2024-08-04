@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   # アクション前に実行するメソッド
-  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+    before_action :is_matching_login_user, only: [:edit, :update, :destroy]
   
   # 投稿画面用
   def new
@@ -15,7 +15,7 @@ class BooksController < ApplicationController
     if @book_new.save
       flash[:notice] = "You have created book successfully."
       # @bookのid=パスの引数
-      redirect_to book_path(@book_new.user_id)
+      redirect_to book_path(@book_new.id)
     else
       # render :indexで必要なインスタンス変数
       @books = Book.all
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
   
 # 本一覧取得
   def index
-    @books = Book.page(params[:page])
+    @books = Book.all
     # 以下テンプレート用
     # 新規投稿用
     @book_new = Book.new
@@ -58,7 +58,7 @@ class BooksController < ApplicationController
     
     if @book.update(book_params)
       flash[:notice] = "You have updated book successfully."
-      redirect_to book_path(@book.user_id)
+      redirect_to books_path(@book.user_id)
     else
       render :edit
     end
@@ -79,10 +79,11 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body, :user_id)
   end
   
+  
   def is_matching_login_user
     log_in_user_id = Book.find(params[:id]).user_id
     unless log_in_user_id == current_user.id
-      redirect_to user_path(current_user.id)
+      redirect_to books_path
     end
   end
   
