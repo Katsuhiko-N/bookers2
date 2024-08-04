@@ -12,7 +12,7 @@ main{
     margin: 10px 0 50px 0;
 }
 
-a{
+a,a:hover{
     text-decoration: none;
 }
 
@@ -54,6 +54,10 @@ td{
 
 .form-text{
     margin-top: 15px;
+}
+
+.btn{
+    margin: 10px 0;
 }
 
 .u-btn{

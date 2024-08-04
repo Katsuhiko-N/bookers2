@@ -18,7 +18,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book_new.id)
     else
       # render :indexで必要なインスタンス変数
-      @books = Book.all
+      @books = Book.page(params[:page])
       @user = User.find(current_user.id)
       render :index
     end
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
   
 # 本一覧取得
   def index
-    @books = Book.all
+    @books = Book.page(params[:page])
     # 以下テンプレート用
     # 新規投稿用
     @book_new = Book.new
