@@ -1,5 +1,5 @@
 <% if @user.errors.any? %>
-  <%= @user.errors.count %> errors prohibited this obj from being saved:
+  <p class="er_message"><%= @user.errors.count %> errors prohibited this obj from being saved:</p>
   <ul>
     <% @user.errors.full_messages.each do |message| %>
     <li><%= message %></li>
