@@ -2,7 +2,7 @@
     <p class="er_message"><%= @book_new.errors.count %>error prohibited this obj from being saved:</p>
     <ul>
         <% @book_new.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+            <li class="message">・<%= message %></li>
         <% end %>
     </ul>
 <% end %>
