@@ -2,10 +2,10 @@ class BooksController < ApplicationController
   # アクション前に実行するメソッド
     before_action :is_matching_login_user, only: [:edit, :update, :destroy]
   
-  # 投稿画面用
-  def new
-    @book_new = Book.new
-  end
+  # 投稿画面用（不要になったためコメントアウト）
+  # def new
+  #   @book_new = Book.new
+  # end
   
   # 投稿機能
   def create
