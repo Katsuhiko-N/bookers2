@@ -12,9 +12,10 @@
     <div class="offset-4 col-lg-4">
         <h2>Editing Book</h2>
         
+        <!--サイズ横x縦-->
         <%= form_with model: @book do |f| %>
             <p class="form-text">Title</p>
-            <%= f.text_field :title, size: "40x20" %>
+            <%= f.text_field :title, size: "42x20" %>
             <p class="form-text">Opinion</p>
             <%= f.text_area :body, size: "45x2" %>
             

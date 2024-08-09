@@ -24,10 +24,11 @@
 
 
 <!--表示にはインスタンス変数book_newが必要-->
+<!--サイズ横x縦-->
 <h2>New book</h2>
 <%= form_with model: book_new do |f| %>
     <p class="form-text">Title</p>
-    <%= f.text_field :title, size: "25x10" %>
+    <%= f.text_field :title, size: "27x10" %>
     <p class="form-text">Opinion</p>
     <%= f.text_area :body, size: "30x2" %>
     <%= f.submit 'Create Book', class:"btn btn-success" %>
