@@ -17,6 +17,18 @@
                                     <div><%= image_tag @book.user.get_profile_image(100,100) %></div>
                                 <% end %>
                                 <%= link_to "#{@book.user.name}", user_path(@book.user.id) %>
+                                
+                                <% if @book.user.followed_by?(current_user, @book.user) %>
+                                    <p>フォロー中</p>
+                                    <%= link_to user_relationship_path(user_id: @book.user.id, book_id: params[:id]), method: :delete, class:"btn-danger btn-sm" do %>
+                                        <span>フォロー解除</span>
+                                    <% end %>
+                                <% else %>
+                                    <%= link_to user_relationship_path(user_id: @book.user.id, book_id: params[:id]), method: :post do %>
+                                        <p>フォローする</p>
+                                    <% end %>
+                                <% end %>
+                                
                             </td>
                             <td class="td-text">
                                 <%= link_to "#{@book.title}", book_path(params[:id]) %>

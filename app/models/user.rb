@@ -33,4 +33,11 @@ class User < ApplicationRecord
              profile_image.variant(resize_to_limit:[width, height]).processed
          end
          
+         
+         def followed_by?(user, followed)
+          relationships.exists?(follower_id: user.id, followed_id: followed.id)
+         end
+         
+         
+         
 end

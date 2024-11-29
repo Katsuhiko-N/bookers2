@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'relationships/create'
   devise_for :users
   root to: 'homes#top'
   # 名前付きルーティング
@@ -10,7 +9,9 @@ Rails.application.routes.draw do
     resource :favorite, only: [:create, :destroy]
   end
   
-  resources :users, only: [:show, :edit, :index, :update]
+  resources :users, only: [:show, :edit, :index, :update] do
+    resource :relationship, only: [:create, :index, :destroy]
+  end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
