@@ -11,10 +11,10 @@ class User < ApplicationRecord
          has_many :favorites, dependent: :destroy
          
          has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-         has_many :follower, through: :relationships, source: :user
+         has_many :followers, through: :relationships, source: :follower
          
          has_many :relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-         has_many :followed, through: :relationships, source: :user
+         has_many :followed_man, through: :relationships, source: :followed
          
          
          # バリデーション

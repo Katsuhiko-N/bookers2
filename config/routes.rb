@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
   devise_for :users
   root to: 'homes#top'
   # 名前付きルーティング
