@@ -8,6 +8,7 @@ class User < ApplicationRecord
          
         # アソシエーション
          has_many :books, dependent: :destroy
+         has_many :favorites, dependent: :destroy
          
          # バリデーション
          validates :name, presence: true

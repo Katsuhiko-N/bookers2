@@ -24,6 +24,23 @@
                             <td class="td-text">
                                 <p><%= @book.body %></p>
                             </td>
+                            
+                            <td class="td-btn">
+                                <% if @book.favorited_by?(current_user) %>
+                                    <p>
+                                        <%= link_to book_favorite_path(@book), method: :delete do %>
+                                            ♥<%= @book.favorites.count %> いいね
+                                        <% end %>
+                                    </p>
+                                <% else %>
+                                    <p>
+                                        <%= link_to book_favorite_path(@book), method: :post do %>
+                                            ♡<%= @book.favorites.count %> いいね
+                                        <% end %>
+                                    </p>
+                                <% end %>
+                            </td>
+                            
                             <% if @book.user_id == current_user.id %>
                             <td class="td-btn">
                                 <!--本のeditページへ-->
