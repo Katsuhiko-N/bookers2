@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: [:show, :edit, :index, :update] do
-    resource :relationship, only: [:create, :index, :destroy]
+    resource :relationship, only: [:create, :destroy] do
+      collection do
+        get 'follower_index'
+        get 'followed_index'
+      end
+    end
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -11,10 +11,12 @@
             <td class="td-text"><strong>introduction</strong></td><td class="td-text"><strong><%= user.introduction %></strong></td>
         </tr>
         <tr>
-            <td><strong>follows</strong></td><td><strong><%= user.follower_count(user) %></strong></td>
+            <td><strong>follows</strong></td>
+            <td><strong><%= link_to follower_index_user_relationship_path(user.id) do %><%= user.follower_count(user) %><% end %></strong></td>
         </tr>
         <tr>
-            <td><strong>follower</strong></td><td><strong><%= user.followed_man_count(user) %></strong></td>
+            <td><strong>follower</strong></td>
+            <td><strong><%= link_to followed_index_user_relationship_path(user.id) do %><%= user.followed_man_count(user) %><% end %></strong></td>
         </tr>
     </tbody>
 </table>

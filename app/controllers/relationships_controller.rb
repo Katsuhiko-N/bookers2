@@ -27,8 +27,12 @@ class RelationshipsController < ApplicationController
     end
   end
   
-  def index
-    @r_ships = Relationship.where(follower_id: current_user.id)
+  def follower_index
+    @r_ships = Relationship.where(follower_id: current_user.id).page(params[:page])
+  end
+  
+  def followed_index
+    @r_ships = Relationship.where(followed_id: current_user.id).page(params[:page])
   end
   
   
