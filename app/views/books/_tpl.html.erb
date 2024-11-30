@@ -10,17 +10,31 @@
         <tr>
             <td class="td-text"><strong>introduction</strong></td><td class="td-text"><strong><%= user.introduction %></strong></td>
         </tr>
+        <tr>
+            <td><strong>follows</strong></td><td><strong><%= user.follower_count(user) %></strong></td>
+        </tr>
+        <tr>
+            <td><strong>follower</strong></td><td><strong><%= user.followed_man_count(user) %></strong></td>
+        </tr>
     </tbody>
 </table>
 
-<!--編集画面へのリンク-->
-<%= link_to edit_user_path(user.id), class:"btn btn-outline-secondary btn-block" do %>
-    <i class="fa-solid fa-user-gear"></i>
+<% if user == current_user %>
+    <!--編集画面へのリンク-->
+    <%= link_to edit_user_path(user.id), class:"btn btn-outline-secondary btn-block" do %>
+        <i class="fa-solid fa-user-gear"></i>
+    <% end %>
+<% else %>
+    <% if user.followed_by?(current_user, user) %>
+        <%= link_to user_relationship_path(user.id), method: :delete, class:"btn btn-danger btn-sm" do %>
+            <p>フォロー外す</p>
+        <% end %>
+    <% else %>
+        <%= link_to user_relationship_path(user.id), method: :post, class:"btn btn-danger btn-sm" do %>
+            <p>フォローする</p>
+        <% end %>
+    <% end %>
 <% end %>
-
-
-
-
 
 
 <!--表示にはインスタンス変数book_newが必要-->

@@ -38,6 +38,13 @@ class User < ApplicationRecord
           relationships.exists?(follower_id: user.id, followed_id: followed.id)
          end
          
+         # フォロー人数
+         def follower_count(user) 
+          return Relationship.where(follower_id: user.id).count
+         end
          
-         
+         # フォロワー人数
+         def followed_man_count(user) 
+          return Relationship.where(followed_id: user.id).count
+         end
 end
