@@ -16,6 +16,7 @@ class User < ApplicationRecord
          has_many :relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
          has_many :followed_man, through: :relationships, source: :followed
          
+         has_many :notifications, dependent: :destroy
          
          # バリデーション
          validates :name, presence: true

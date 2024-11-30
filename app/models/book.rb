@@ -2,6 +2,7 @@ class Book < ApplicationRecord
     # アソシエーション
     belongs_to :user
     has_many :favorites, dependent: :destroy
+    has_many :notifications, as: :notifiable, dependent: :destroy
     
     # バリデーション
     validates :title, presence: true
