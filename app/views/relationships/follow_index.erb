@@ -12,7 +12,7 @@
     </thead>
     <tbody>
         <% @r_ships.each do |r_ship| %>
-            <% user = User.find(r_ship.followed_id) %>
+            <% user = User.find(r_ship.follower_id) %>
             <tr>
                 <td><%= image_tag user.get_profile_image(100,100) %></td>
                 <td class="td-text"><%= user.name %></td>

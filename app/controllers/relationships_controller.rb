@@ -2,9 +2,8 @@ class RelationshipsController < ApplicationController
   
   def create
     r_ship = Relationship.new
-    r_ship.follower_id = current_user.id
-    r_ship.followed_id = params[:user_id]
-    
+    r_ship.follower_id = params[:user_id]
+    r_ship.followed_id = current_user.id
     if r_ship.save
       case params[:page_id]
       when "0"
@@ -27,17 +26,17 @@ class RelationshipsController < ApplicationController
     end
   end
   
-  def follower_index
-    @r_ships = Relationship.where(follower_id: current_user.id).page(params[:page])
+  def follow_index
+    @r_ships = Relationship.where(followed_id: current_user.id).page(params[:page])
   end
   
   def followed_index
-    @r_ships = Relationship.where(followed_id: current_user.id).page(params[:page])
+    @r_ships = Relationship.where(follower_id: current_user.id).page(params[:page])
   end
   
   
   def destroy
-    r_ship = Relationship.find_by(follower_id: current_user.id, followed_id: params[:user_id])
+    r_ship = Relationship.find_by(followed_id: current_user.id, follower_id: params[:user_id])
     if r_ship.destroy
       case params[:page_id]
       when "0"

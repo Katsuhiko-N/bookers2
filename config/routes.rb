@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :index, :update] do
     resource :relationship, only: [:create, :destroy] do
       collection do
-        get 'follower_index'
+        get 'follow_index'
         get 'followed_index'
       end
     end
