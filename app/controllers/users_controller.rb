@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   # アクション前に実行するメソッド
+  before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update]
   
   def index

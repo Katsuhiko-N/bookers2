@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   # アクション前に実行するメソッド
     before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+    before_action :authenticate_user!
   
   # 投稿画面用（不要になったためコメントアウト）
   # def new
