@@ -9,12 +9,14 @@ class User < ApplicationRecord
         # アソシエーション
          has_many :books, dependent: :destroy
          has_many :favorites, dependent: :destroy
+         has_many :notifications, dependent: :destroy
          
-         has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-         has_many :follower, through: :relationships, source: :user
+         has_many :follower_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+         has_many :followers, through: :follower_relationships, source: :followed
          
-         has_many :relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-         has_many :followed, through: :relationships, source: :user
+         has_many :followed_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+         has_many :followings, through: :followed_relationships, source: :follower
+         
          
          
          # バリデーション
@@ -33,4 +35,18 @@ class User < ApplicationRecord
              profile_image.variant(resize_to_limit:[width, height]).processed
          end
          
+         
+         def followed_by?(user, followed)
+          followed_relationships.exists?(follower_id: user.id, followed_id: followed.id)
+         end
+         
+         # フォロワー人数
+         def followed_count(user) 
+          return Relationship.where(followed_id: user.id).count
+         end
+         
+         # フォロー人数
+         def follower_count(user) 
+          return Relationship.where(follower_id: user.id).count
+         end
 end

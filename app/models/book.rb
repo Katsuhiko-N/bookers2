@@ -2,6 +2,7 @@ class Book < ApplicationRecord
     # アソシエーション
     belongs_to :user
     has_many :favorites, dependent: :destroy
+    has_many :notifications, as: :notifiable, dependent: :destroy
     
     # バリデーション
     validates :title, presence: true
@@ -13,5 +14,10 @@ class Book < ApplicationRecord
         favorites.exists?(user_id: user.id)
     end
     
+    after_create do
+        user.followings.each do |following|
+            notifications.create(user_id: following.id)
+        end
+    end
     
 end

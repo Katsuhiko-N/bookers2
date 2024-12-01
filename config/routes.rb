@@ -9,7 +9,16 @@ Rails.application.routes.draw do
     resource :favorite, only: [:create, :destroy]
   end
   
-  resources :users, only: [:show, :edit, :index, :update]
+  resources :users, only: [:show, :edit, :index, :update] do
+    resource :relationship, only: [:create, :destroy] do
+      collection do
+        get 'follow_index'
+        get 'followed_index'
+      end
+    end
+  end
+  
+  resources :notifications, only: [:update]
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

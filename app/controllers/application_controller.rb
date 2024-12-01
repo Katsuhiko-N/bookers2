@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    
+    include NotificationsHelper
     # 未ログインユーザをはじく
     before_action :authenticate_user!, except:[:top,:about]
     before_action :configre_permitted_parameters, if: :devise_controller?
