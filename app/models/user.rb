@@ -12,10 +12,10 @@ class User < ApplicationRecord
          has_many :notifications, dependent: :destroy
          
          has_many :follower_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-         has_many :followers, through: :follower_relationships, source: :follower
+         has_many :followers, through: :follower_relationships, source: :followed
          
          has_many :followed_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-         has_many :followed_man, through: :followed_relationships, source: :followed
+         has_many :followings, through: :followed_relationships, source: :follower
          
          
          
@@ -37,11 +37,11 @@ class User < ApplicationRecord
          
          
          def followed_by?(user, followed)
-          follower_relationships.exists?(followed_id: user.id, follower_id: followed.id)
+          followed_relationships.exists?(follower_id: user.id, followed_id: followed.id)
          end
          
          # フォロワー人数
-         def followed_man_count(user) 
+         def followed_count(user) 
           return Relationship.where(followed_id: user.id).count
          end
          

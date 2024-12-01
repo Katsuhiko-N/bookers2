@@ -15,8 +15,8 @@ class Book < ApplicationRecord
     end
     
     after_create do
-        user.followers.each do |follower|
-            notifications.create(user_id: followed.id)
+        user.followings.each do |following|
+            notifications.create(user_id: following.id)
         end
     end
     
